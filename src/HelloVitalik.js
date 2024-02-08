@@ -1,6 +1,6 @@
 import { ethers, formatEther } from "ethers";
 const ALCHEMY_MAINNET_URL = process.env.ALCHEMY_MAINNET_URL;
-const HelloVitalik1 = async() => {
+const HelloVitalikMain = async() => {
     // await console.log(ALCHEMY_MAINNET_URL);
     const provider = new ethers.JsonRpcProvider(ALCHEMY_MAINNET_URL);
     const balance = await provider.getBalance(`ricmoo.eth`);
@@ -9,5 +9,5 @@ const HelloVitalik1 = async() => {
     console.log(`Balance: ${convertBalance}`);
 }
 export {
-    HelloVitalik1
+    HelloVitalikMain
 };

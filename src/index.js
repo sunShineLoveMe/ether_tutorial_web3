@@ -1,9 +1,14 @@
 import dotenv from  "dotenv";
 dotenv.config();
-import {HelloVitalik1} from "./HelloVitalik.js";
+
+import {HelloVitalikMain} from "./HelloVitalik.js";
+import {ProviderMain} from './Provider.js'
 
 const main = () => {
-    HelloVitalik1();
+    // 入门查询v神账户余额
+    // HelloVitalikMain();
+    // provider
+    ProviderMain();
 }
 
 main();
