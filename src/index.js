@@ -11,6 +11,7 @@ import { EventMain } from "./Event.js";
 import { ContractListenerMain } from "./ContractListener.js";
 import { EventFilterMain } from "./EventFilter.js";
 import { StaticCallMain } from "./StaticCall.js"
+import { ERC721Main } from "./ERC721Interface.js"
 
 const main = () => {
     // 入门查询v神账户余额
@@ -24,7 +25,8 @@ const main = () => {
     // EventMain();
     // ContractListenerMain();
     // EventFilterMain();
-    StaticCallMain();
+    // StaticCallMain();
+    ERC721Main();
 }
 
 main();
