@@ -5,6 +5,7 @@ import {HelloVitalikMain} from "./HelloVitalik.js";
 import {ProviderMain} from './Provider.js'
 import { ContractMain } from "./ReadContract.js";
 import { SendETHMain } from "./SendETH.js";
+import { WriteContractMain } from "./WriteContract.js";
 
 const main = () => {
     // 入门查询v神账户余额
@@ -12,7 +13,8 @@ const main = () => {
     // provider
     // ProviderMain();
     // ContractMain();
-    SendETHMain();
+    // SendETHMain();
+    WriteContractMain();
 }
 
 main();
