@@ -9,6 +9,7 @@ import { WriteContractMain } from "./WriteContract.js";
 import { DeployContractMain } from "./DeployContract.js";
 import { EventMain } from "./Event.js";
 import { ContractListenerMain } from "./ContractListener.js";
+import { EventFilterMain } from "./EventFilter.js";
 
 const main = () => {
     // 入门查询v神账户余额
@@ -20,7 +21,8 @@ const main = () => {
     // WriteContractMain();
     // DeployContractMain();
     // EventMain();
-    ContractListenerMain();
+    // ContractListenerMain();
+    EventFilterMain();
 }
 
 main();
