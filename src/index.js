@@ -8,6 +8,7 @@ import { SendETHMain } from "./SendETH.js";
 import { WriteContractMain } from "./WriteContract.js";
 import { DeployContractMain } from "./DeployContract.js";
 import { EventMain } from "./Event.js";
+import { ContractListenerMain } from "./ContractListener.js";
 
 const main = () => {
     // 入门查询v神账户余额
@@ -18,7 +19,8 @@ const main = () => {
     // SendETHMain();
     // WriteContractMain();
     // DeployContractMain();
-    EventMain();
+    // EventMain();
+    ContractListenerMain();
 }
 
 main();

@@ -34,6 +34,10 @@ Wallet类继承了Signer类，并且开发者可以像包含私钥的外部拥�
 ### 6. 检索事件[检索事件](./src/Event.js)
 智能合约释放的事件存储于以太坊虚拟机中的日志中。日志分为两个主题：topics和数据data部分，其中事件哈希和indexed变量存储于topics中，作为检索方便以后搜索，没有indexed变量存储于data中，不能被直接检索，但可以存储更复杂的数据结构.
 
+### 7. 监听合约事件[监听合约事件](./src/ContractListener.js)
+- contract.on : 持续监听合约事件
+- contract.once: 只监听一次合约释放事件
+
 
 
   
