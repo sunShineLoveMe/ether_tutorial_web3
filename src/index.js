@@ -6,6 +6,8 @@ import {ProviderMain} from './Provider.js'
 import { ContractMain } from "./ReadContract.js";
 import { SendETHMain } from "./SendETH.js";
 import { WriteContractMain } from "./WriteContract.js";
+import { DeployContractMain } from "./DeployContract.js";
+import { EventMain } from "./Event.js";
 
 const main = () => {
     // 入门查询v神账户余额
@@ -14,7 +16,9 @@ const main = () => {
     // ProviderMain();
     // ContractMain();
     // SendETHMain();
-    WriteContractMain();
+    // WriteContractMain();
+    // DeployContractMain();
+    EventMain();
 }
 
 main();
