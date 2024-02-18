@@ -68,5 +68,7 @@ Wallet类继承了Signer类，并且开发者可以像包含私钥的外部拥�
     ```
      contract.filters.Transfer(null, [ myAddress, otherAddress ])
      ```
-
+### 9. 静态调用[静态调用](./src/StaticCall.js)
+staticCall方法是在发送交易之前，检查交易是否会失败，节省大量gas.
+ethers.js将eth_call封装在staticCall方法中，方便开发者模拟交易的结果，并避免发送可能失败的交易。我们利用staticCall模拟了Vitalik和测试钱包的转账。当然，这个方法还有更多用处，比如计算土狗币的交易滑点。
   

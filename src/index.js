@@ -10,6 +10,7 @@ import { DeployContractMain } from "./DeployContract.js";
 import { EventMain } from "./Event.js";
 import { ContractListenerMain } from "./ContractListener.js";
 import { EventFilterMain } from "./EventFilter.js";
+import { StaticCallMain } from "./StaticCall.js"
 
 const main = () => {
     // 入门查询v神账户余额
@@ -22,7 +23,8 @@ const main = () => {
     // DeployContractMain();
     // EventMain();
     // ContractListenerMain();
-    EventFilterMain();
+    // EventFilterMain();
+    StaticCallMain();
 }
 
 main();
