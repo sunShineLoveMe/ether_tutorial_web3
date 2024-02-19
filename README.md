@@ -136,6 +136,15 @@ MEV(Maximal Extractable Value，最大可提取价值)，在区块链中，矿�
 ### 16. 解码交易详情[解码交易详情](./src/DecodeTx.js)
 - 未决交易
   未决交易是用户发出但没被矿工打包上链的交易，在mempool（交易内存池）中出现.
+- interface 
+  ethers.js提供了Interface类方便解码交易数据。声明Interface类型和声明abi的方法差不多
+  ```
+    const iface = ethers.Interface([
+      "function balanceOf(address) public view returns(uint)",
+      "function transfer(address, uint) public returns (bool)",
+      "function approve(address, uint256) public returns (bool)"
+    ]);
+  ```  
 
 
 
