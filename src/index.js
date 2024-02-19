@@ -14,6 +14,7 @@ import { StaticCallMain } from "./StaticCall.js"
 import { ERC721Main } from "./ERC721Interface.js"
 import { CallDataMain } from "./CalldataEncode.js"
 import { HDMain } from "./HDwallet.js"
+import { multiTransferMain } from "./MultiTransfer.js";
 
 const main = () => {
     // 入门查询v神账户余额
@@ -30,7 +31,8 @@ const main = () => {
     // StaticCallMain();
     // ERC721Main();
     // CallDataMain();
-    HDMain();
+    // HDMain();
+    multiTransferMain();
 }
 
 main();
