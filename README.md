@@ -122,9 +122,20 @@ BIP协议：
     console.log(`WTF 归集结束`)
 ```
 批量归集的核心是在循环中通过HD派生的钱包转账到目标钱包。
-
-
-
+### 15. 监听Mempool[监听Mempool](./src/Mempool.js)
+MEV(Maximal Extractable Value，最大可提取价值)，在区块链中，矿工通过打包，排除或者重新排序他们产出的区块中的交易来获得一定的利润，而MEV是衡量这种利润的指标。
+- Mempool
+  在用户的交易被矿工打包进以太坊区块链之前，所有交易会汇集到Mempool（交易内存池）中。矿工也是在这里寻找费用高的交易优先打包，实现利益最大化。通常来说，gas price越高的交易，越容易被打包。<br/>
+  同时，一些MEV机器人也会搜索mempool中有利可图的交易。比如，一笔滑点设置过高的swap交易可能会被三明治攻击：通过调整gas，机器人会在这笔交易之前插一个买单，之后发送一个卖单，等效于把把代币以高价卖给用户（抢跑）。
+  ![mempool](./images/WX20240219-153149@2x.png)
+- 监听
+  利用ethers.js的Provider类提供的方法，监听mempool中的pending（未决，待打包）交易：
+  ```
+    provider.on("pending", listener)
+  ```  
+### 16. 解码交易详情[解码交易详情](./src/DecodeTx.js)
+- 未决交易
+  未决交易是用户发出但没被矿工打包上链的交易，在mempool（交易内存池）中出现.
 
 
 
