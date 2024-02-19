@@ -108,6 +108,20 @@ BIP协议：
   - ERC20合约地址：0x836759c18deAF143A240f985609317eD7Ff05B5D
   - 空头合约地址: 0x34A4B863d510B2710f5BCb66A495AD8f2ff8099F
   - WETH 合约地址： 0xf531b8f309be94191af87605cfbf600d71c2cfe0(不确定)
+### 14. 批量归集[批量归集](./src/MulitiCollect.js)
+```
+  for (let i = 0; i < numWallet; i++) {
+        // 将钱包连接到provider
+        let walletiWithProvider = wallets[i].connect(provider)
+        // 将合约连接到新的钱包
+        let contractConnected = contractWTF.connect(walletiWithProvider)
+        var tx = await contractConnected.transfer(wallet.address, amount)
+        console.log(`第 ${i+1} 个钱包 ${wallets[i].address} WTF 归集开始`)
+    }
+    await tx.wait()
+    console.log(`WTF 归集结束`)
+```
+批量归集的核心是在循环中通过HD派生的钱包转账到目标钱包。
 
 
 
