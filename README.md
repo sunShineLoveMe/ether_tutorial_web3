@@ -78,6 +78,34 @@ ERC721合约中会实现IERC165接口合约的supportsInterface函数，并且�
 
 ### 11. 编码calldata[编码calldata](./src/Calldata.js)
 ethers.js的接口类抽象了与以太坊网络上的合约交互所需的ABI编码和解码.接口类封装了一些编码解码的方法。与一些特殊的合约交互时（比如代理合约），你需要编码参数、解码返回值.
+### 12. 批量生成钱包[批量生成钱包](./src/HDwallet.js)
+HD钱包（Hierarchical Deterministic Wallet，多层确定性钱包）是一种数字钱包 ，通常用于存储比特币和以太坊等加密货币持有者的数字密钥。通过它，用户可以从一个随机种子创建一系列密钥对，更加便利、安全、隐私.
+BIP协议：
+- BIP32
+  - 在BIP32推出之前，用户需要记录一堆的私钥才能管理很多钱包。BIP32提出可以用一个随机种子衍生多个私钥，更方便的管理多个钱包
+  ![BIP32](./images/WX20240219-091059@2x.png)
+- BIP44
+  - IP44为BIP32的衍生路径提供了一套通用规范，适配比特币、以太坊等多链。这一套规范包含六级，每级之间用"/"分割：
+  ```
+    m / purpose' / coin_type' / account' / change / address_index
+  ```  
+    - m: 固定为"m"
+    - purpose：固定为"44"
+    - coin_type：代币类型，比特币主网为0，比特币测试网为1，以太坊主网为60
+    - account：账户索引，从0开始
+    - change：是否为外部链，0为外部链，1为内部链，一般填0
+    - address_index：地址索引，从0开始，想生成新地址就把这里改为1，2，3
+- BIP39
+  - BIP39让用户能以一些人类可记忆的助记词的方式保管私钥，而不是一串16进制的数字：
+  ``` javascript
+    私钥
+    0x813f8f0a4df26f6455814fdd07dd2ab2d0e2d13f4d2f3c66e7fd9e3856060f89
+    助记词
+    air organ twist rule prison symptom jazz cheap rather dizzy verb glare jeans orbit weapon universe require tired sing casino business anxiety seminar hunt
+  ```
+  
+
+
 
 
   
