@@ -1,4 +1,4 @@
-## ether.js 基础
+## ether.js 初中级教程,学完直接黑客松了
 ### 备注：
 - 目前这套教程ethers版本建议用@6.11.1
 - 在Flashbots这章节中ethers用@6.7.1
