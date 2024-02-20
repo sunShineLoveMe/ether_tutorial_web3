@@ -177,7 +177,29 @@ Private Keys
   抢先交易是以太坊等公链上普遍存在的问题。我们没法消除它，但是可以通过减少交易顺序或时间的重要性，减少被抢先交易的收益：  
   - 使用预提交方案(commit-reveal scheme)。
   - 使用暗池，用户发出的交易将不进入公开的mempool，而是直接到矿工手里。例如 flashbots 和 TaiChi.
+- 关于交易tx数据中
+  ```
+    const frontRunTx = {
+            to: tx.to,
+            value: tx.value,
+            maxPriorityFeePerGas: BigInt(tx.maxPriorityFeePerGas.toString()) * 2n,
+            maxFeePerGas: BigInt(tx.maxFeePerGas.toString()) * 2n,
+            gasLimit: BigInt(tx.gasLimit.toString()) * 2n,
+            data: tx.data
+        }
+  ```
+  在EIP1559中，tx数据中的gasPrice字段不见了，取而代之的是用户需要在tx中设置两外两个字段：maxPriorityFeePerGas 和 maxFeePerGas。<br/>
+  在EIP1559中，用户付出的gas费用有两个去向：一是直接销毁，二是给miner。
+  | 变量      | 含义 |
+  | ----------- | ----------- |
+  | baseFeePerGas|这个值用户无法设置，在每个区块头中，协议会动态调节它，用户tx的gas费用中直接销毁的部分为: baseFeePerGas * gasUsed|
+  | maxPriorityFeePerGas |用户在 tx 中设置。用户给 miner 的最大 gas 费为 maxPriorityFeePerGas * gasUsed|
+    | maxFeePerGas |用户在 tx 中设置。 用户使用这个值来设置他愿意为 tx 付出的最大 gas 费，具体这个最大 gas 费就是 maxFeePerGas * gasUsed|
 
+  - 那么用户最终付出的费用是多少呢？
+    - 当 baseFeePerGas + maxPriorityFeePerGas 小于 maxFeePerGas 时，用户付出的 gas 费就是 (baseFeePerGas + maxPriorityFeePerGas) * gasUsed ；
+    - 当 baseFeePerGas + maxPriorityFeePerGas 大于 maxFeePerGas 时，用户付出的 gas 费就是 maxFeePerGas * gasUsed
+    - 就是说用户最终付出的 gas 费是 maxFeePerGas * gasUsed 和 (baseFeePerGas + maxPriorityFeePerGas) * gasUsed 两者中的较小值：
 
 
 
