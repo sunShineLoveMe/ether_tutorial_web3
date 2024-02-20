@@ -18,6 +18,7 @@ import { multiTransferMain } from "./MultiTransfer.js";
 import { MultiCollectMain } from "./MulitiCollect.js"
 import { MempoolMain } from "./Mempool.js"
 import { DecodeTxMain } from "./DecodeTx.js"
+import { FrontRunMain } from "./Frontrun.js"
 
 const main = () => {
     // 入门查询v神账户余额
@@ -38,7 +39,8 @@ const main = () => {
     // multiTransferMain();
     // MultiCollectMain();
     // MempoolMain();
-    DecodeTxMain();
+    // DecodeTxMain();
+    FrontRunMain();
 }
 
 main();
