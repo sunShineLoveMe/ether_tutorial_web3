@@ -20,6 +20,7 @@ import { MempoolMain } from "./Mempool.js"
 import { DecodeTxMain } from "./DecodeTx.js"
 import { FrontRunMain } from "./FrontrunV1.js"
 import { FrontRunMainV2, NormalTxMain } from "./FrontrunV2.js";
+import { ERC20CheckMain } from './ERC20Check.js'
 
 const main = () => {
     // 入门查询v神账户余额
@@ -43,7 +44,8 @@ const main = () => {
     // DecodeTxMain();
     // FrontRunMain();
     // NormalTxMain();
-    FrontRunMainV2();
+    // FrontRunMainV2();
+    ERC20CheckMain();
 }
 
 main();

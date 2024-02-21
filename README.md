@@ -202,7 +202,25 @@ Private Keys
   - 那么用户最终付出的费用是多少呢？
     - 当 baseFeePerGas + maxPriorityFeePerGas 小于 maxFeePerGas 时，用户付出的 gas 费就是 (baseFeePerGas + maxPriorityFeePerGas) * gasUsed ；
     - 当 baseFeePerGas + maxPriorityFeePerGas 大于 maxFeePerGas 时，用户付出的 gas 费就是 maxFeePerGas * gasUsed
-    - 就是说用户最终付出的 gas 费是 maxFeePerGas * gasUsed 和 (baseFeePerGas + maxPriorityFeePerGas) * gasUsed 两者中的较小值：
+    - 就是说用户最终付出的 gas 费是 maxFeePerGas * gasUsed 和 (baseFeePerGas + maxPriorityFeePerGas) * gasUsed 两者中的较小值.
+### 18. 识别ERC20合约[识别ERC20合约](./src/ERC20Check.js)
+之前的教程中可以用基于 ERC165 识别 ERC721 合约，但是ERC20 的发布早于 ERC165因此我们没法用相同的办法识别 ERC20 合约，只能另找办法。<br/>
+区块链是公开的，我们能获取任意合约地址上的代码（bytecode）。因此，我们可以先获取合约代码，然后对比其是否包含 ERC20 标准中的函数就可以了。
+<br/>
+首先，我们用 provider 的 getCode() 函数来取得对应地址的 bytecode：
+```
+let code = await provider.getCode(contractAddress)
+```
+接下来我们要检查合约 bytecode 是否包含 ERC20 标准中的函数。<br/>
+合约 bytecode 中存储了相应的[函数选择器]：如果合约包含 transfer(address, uint256) 函数，那么 bytecode 就会包含 a9059cbb；如果合约包含 totalSupply()，那么 bytecode 就会包含 18160ddd.<br/>
+
+我们仅需检测 transfer(address, uint256) 和 totalSupply() 两个函数，而不用检查全部6个。原因：
+1. ERC20标准中只有 transfer(address, uint256) 不包含在 ERC721标准、ERC1155和ERC777标准中。因此如果一个合约包含 transfer(address, uint256) 的选择器，就能确定它是 ERC20 代币合约，而不是其他
+2. 额外检测 totalSupply() 是为了防止选择器碰撞：一串随机的字节码可能和 transfer(address, uint256) 的选择器（4字节）相同。
+
+
+
+
 
 
 
